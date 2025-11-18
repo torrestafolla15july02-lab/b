@@ -9,6 +9,6 @@ app.use(express.static(path.join(__dirname,'public')))
 
 
 app.listen(port,()=>{
-    console.log('App esta ejecutandose en puerto 3000')
+    console.log('ya quedooo')
 }
 )
