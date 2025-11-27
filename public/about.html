@@ -6,83 +6,157 @@
     <title>Sobre Nosotros - DOCTOR CELL</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
+    <style>
         :root {
             --primary-color: #28a745;
+            --secondary-color: #155724;
         }
         
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
         
         .navbar-brand {
-            font-weight: bold;
+            font-weight: 700;
             color: var(--primary-color) !important;
+            font-size: 1.6rem;
         }
         
-        .category-hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581094794329-95c5b4a56b0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+        .about-hero {
+            background: linear-gradient(rgba(40, 167, 69, 0.9), rgba(21, 87, 36, 0.9)), url('https://images.unsplash.com/photo-1581094794329-95c5b4a56b0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
+            background-position: center;
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
         }
         
-        .service-card {
+        .team-card {
             background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
             height: 100%;
-            border-left: 4px solid var(--primary-color);
         }
         
-        .repair-image {
-            width: 100%;
-            height: 200px;
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-img {
+            width: 120px;
+            height: 120px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--primary-color);
+        }
+        
+        .value-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
         
         .btn-primary-custom {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
         }
         
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-decoration: none;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
         }
         
         .footer {
-            background: #343a40;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
             color: white;
-            padding: 3rem 0;
+            padding: 50px 0 30px;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .history-img {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/5215512345678" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/5215512345678?text=Hola,%20me%20gustaría%20conocer%20más%20sobre%20ustedes" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="fas fa-mobile-alt me-2"></i>DOCTOR CELL
@@ -96,16 +170,16 @@
                         <a class="nav-link" href="index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="pantallas.html">Pantallas</a>
+                        <a class="nav-link active" href="about.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="baterias.html">Baterías</a>
+                        <a class="nav-link" href="shop.html">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="problemas.html">Problemas Técnicos</a>
+                        <a class="nav-link" href="shop-single.html">Reparaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contacto.html">Contacto</a>
+                        <a class="nav-link" href="contact.html">Contacto</a>
                     </li>
                 </ul>
             </div>
@@ -113,149 +187,131 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="category-hero">
+    <section class="about-hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h1 class="mb-4">Reparación de Pantallas</h1>
-                    <p class="lead">Cambiamos tu pantalla rota con repuestos de calidad</p>
+                    <h1 class="display-5 fw-bold mb-4">Nuestra Historia</h1>
+                    <p class="lead">Más de 5 años reparando celulares con pasión y dedicación</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Grid -->
+    <!-- About Content -->
     <section class="py-5">
         <div class="container">
-            <div class="row g-4">
-                <!-- iPhone -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Pantalla iPhone" class="repair-image">
-                        <h5>iPhone</h5>
-                        <p class="text-muted">Todos los modelos desde iPhone 6 hasta iPhone 14</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-primary mb-0">Desde $600 MXN</span>
-                            <a href="https://wa.me/5215512345678?text=Hola,%20necesito%20cambiar%20la%20pantalla%20de%20mi%20iPhone" 
-                               class="btn btn-primary-custom btn-sm" target="_blank">
-                                Cotizar
-                            </a>
-                        </div>
-                    </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5">
+                    <img src="https://images.unsplash.com/photo-1581094794358-9377e7fddf2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Nuestro taller" class="img-fluid history-img">
                 </div>
-                
-                <!-- Samsung -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Pantalla Samsung" class="repair-image">
-                        <h5>Samsung</h5>
-                        <p class="text-muted">Serie Galaxy, Note, A, y todos los modelos</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-primary mb-0">Desde $500 MXN</span>
-                            <a href="https://wa.me/5215512345678?text=Hola,%20necesito%20cambiar%20la%20pantalla%20de%20mi%20Samsung" 
-                               class="btn btn-primary-custom btn-sm" target="_blank">
-                                Cotizar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Xiaomi -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Pantalla Xiaomi" class="repair-image">
-                        <h5>Xiaomi</h5>
-                        <p class="text-muted">Redmi, Mi Series, Poco y todos los modelos</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-primary mb-0">Desde $450 MXN</span>
-                            <a href="https://wa.me/5215512345678?text=Hola,%20necesito%20cambiar%20la%20pantalla%20de%20mi%20Xiaomi" 
-                               class="btn btn-primary-custom btn-sm" target="_blank">
-                                Cotizar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Motorola -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Pantalla Motorola" class="repair-image">
-                        <h5>Motorola</h5>
-                        <p class="text-muted">Moto G, Moto E, Edge y toda la línea</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-primary mb-0">Desde $400 MXN</span>
-                            <a href="https://wa.me/5215512345678?text=Hola,%20necesito%20cambiar%20la%20pantalla%20de%20mi%20Motorola" 
-                               class="btn btn-primary-custom btn-sm" target="_blank">
-                                Cotizar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Huawei -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Pantalla Huawei" class="repair-image">
-                        <h5>Huawei</h5>
-                        <p class="text-muted">P Series, Mate Series, Nova y más</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-primary mb-0">Desde $500 MXN</span>
-                            <a href="https://wa.me/5215512345678?text=Hola,%20necesito%20cambiar%20la%20pantalla%20de%20mi%20Huawei" 
-                               class="btn btn-primary-custom btn-sm" target="_blank">
-                                Cotizar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Otras Marcas -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Otras marcas" class="repair-image">
-                        <h5>Otras Marcas</h5>
-                        <p class="text-muted">LG, Sony, Alcatel, ZTE y más</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 text-primary mb-0">Desde $350 MXN</span>
-                            <a href="https://wa.me/5215512345678?text=Hola,%20necesito%20cambiar%20la%20pantalla%20de%20mi%20celular" 
-                               class="btn btn-primary-custom btn-sm" target="_blank">
-                                Cotizar
-                            </a>
-                        </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">¿Quiénes Somos?</h2>
+                    <p class="lead mb-4">DOCTOR CELL nació del sueño de ofrecer reparaciones de calidad a precios justos para nuestra comunidad.</p>
+                    <p class="mb-4">Comenzamos en 2018 como un pequeño local familiar, reparando celulares de amigos y vecinos. Con el tiempo, fuimos creciendo gracias a la confianza de nuestros clientes y hoy somos referentes en reparación de dispositivos móviles.</p>
+                    <p class="mb-4">Nos enorgullece haber ayudado a más de 2,500 personas a recuperar sus dispositivos y mantener una tasa de satisfacción del 95%.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="contact.html" class="btn btn-primary-custom">Visítanos</a>
+                        <a href="shop.html" class="btn btn-outline-primary">Nuestros Servicios</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Info -->
+    <!-- Values Section -->
     <section class="py-5 bg-light">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h3 class="mb-4">¿Cómo funciona?</h3>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <i class="fas fa-search fa-2x text-primary mb-3"></i>
-                            <h6>1. Diagnóstico</h6>
-                            <p class="text-muted">Revisamos tu celular gratis</p>
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Nuestros Valores</h2>
+                    <p class="lead text-muted">Los principios que guían nuestro trabajo</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <i class="fas fa-tools fa-2x text-primary mb-3"></i>
-                            <h6>2. Reparación</h6>
-                            <p class="text-muted">Cambiamos la pantalla</p>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <i class="fas fa-check-circle fa-2x text-primary mb-3"></i>
-                            <h6>3. Pruebas</h6>
-                            <p class="text-muted">Probamos todo funciona bien</p>
-                        </div>
+                        <h4>Precios Justos</h4>
+                        <p class="text-muted">Creemos en precios transparentes y accesibles para todos. Sin sorpresas, sin costos ocultos.</p>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Calidad Garantizada</h4>
+                        <p class="text-muted">Utilizamos repuestos de calidad y ofrecemos garantía en todos nuestros servicios.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Compromiso Social</h4>
+                        <p class="text-muted">Somos parte de esta comunidad y nos preocupamos por el bienestar de nuestros vecinos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Nuestro Equipo</h2>
+                    <p class="lead text-muted">Personas apasionadas por la tecnología</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Carlos Méndez" class="team-img">
+                        <h4 class="text-primary">Carlos Méndez</h4>
+                        <p class="text-muted mb-3">Fundador & Técnico Principal</p>
+                        <p class="mb-0">"Cada reparación es una oportunidad para ayudar a alguien a recuperar algo importante en su vida."</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Ana Rodríguez" class="team-img">
+                        <h4 class="text-primary">Ana Rodríguez</h4>
+                        <p class="text-muted mb-3">Especialista en Software</p>
+                        <p class="mb-0">"Me encanta resolver problemas complejos y ver cómo la tecnología mejora la vida de las personas."</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Miguel Torres" class="team-img">
+                        <h4 class="text-primary">Miguel Torres</h4>
+                        <p class="text-muted mb-3">Técnico en Hardware</p>
+                        <p class="mb-0">"Cada dispositivo tiene una historia, y me gusta ser parte de darle una segunda oportunidad."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="mb-4">¿Tienes alguna pregunta?</h2>
+                    <p class="lead mb-4">Estamos aquí para ayudarte. Contáctanos sin compromiso.</p>
+                    <a href="contact.html" class="btn btn-light btn-lg px-5">
+                        <i class="fas fa-envelope me-2"></i>Escríbenos
+                    </a>
                 </div>
             </div>
         </div>
@@ -266,30 +322,56 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h5 class="text-success mb-3">
+                    <h4 class="text-success mb-4">
                         <i class="fas fa-mobile-alt me-2"></i>DOCTOR CELL
-                    </h5>
-                    <p>Reparación de celulares con honestidad y buen precio.</p>
+                    </h4>
+                    <p class="mb-4">Especialistas en reparación de celulares con años de experiencia y compromiso con nuestra comunidad.</p>
+                    <div class="d-flex">
+                        <a href="#" class="text-white me-3 fs-5">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-white me-3 fs-5">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white fs-5">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="col-lg-4 mb-4">
-                    <h5 class="text-white mb-3">Contacto</h5>
-                    <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>Calle Local #123, Centro</p>
-                    <p class="mb-1"><i class="fas fa-phone me-2"></i>(55) 1234-5678</p>
-                    <p class="mb-0"><i class="fas fa-clock me-2"></i>Lun-Vie: 10am-7pm</p>
+                    <h5 class="text-white mb-4">Contacto</h5>
+                    <p class="mb-3">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        Av. Principal #123, Colonia Centro
+                    </p>
+                    <p class="mb-3">
+                        <i class="fas fa-phone me-2"></i>
+                        <a href="tel:5512345678" class="text-white text-decoration-none">(55) 1234-5678</a>
+                    </p>
+                    <p class="mb-0">
+                        <i class="fas fa-clock me-2"></i>
+                        Lun-Vie: 9:30 AM - 7:00 PM<br>
+                        Sábados: 9:30 AM - 2:00 PM
+                    </p>
                 </div>
                 <div class="col-lg-4 mb-4">
-                    <h5 class="text-white mb-3">Categorías</h5>
+                    <h5 class="text-white mb-4">Categorías</h5>
                     <ul class="list-unstyled">
-                        <li><a href="pantallas.html" class="text-white text-decoration-none">Pantallas</a></li>
-                        <li><a href="baterias.html" class="text-white text-decoration-none">Baterías</a></li>
-                        <li><a href="problemas.html" class="text-white text-decoration-none">Problemas Técnicos</a></li>
+                        <li class="mb-2"><a href="shop.html#pantallas" class="text-white text-decoration-none">Pantallas Rotas</a></li>
+                        <li class="mb-2"><a href="shop.html#baterias" class="text-white text-decoration-none">Cambio de Baterías</a></li>
+                        <li class="mb-2"><a href="shop.html#tecnicos" class="text-white text-decoration-none">Problemas Técnicos</a></li>
+                        <li class="mb-2"><a href="shop.html#agua" class="text-white text-decoration-none">Daño por Agua</a></li>
+                        <li class="mb-2"><a href="shop.html#software" class="text-white text-decoration-none">Problemas de Software</a></li>
                     </ul>
                 </div>
             </div>
-            <hr class="bg-white">
+            <hr class="bg-white my-4">
             <div class="row pt-3">
-                <div class="col-12 text-center">
-                    <p class="mb-0">© 2023 DOCTOR CELL - Reparación de Celulares</p>
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">© 2023 DOCTOR CELL. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Hecho con 💚 para nuestra comunidad</p>
                 </div>
             </div>
         </div>
