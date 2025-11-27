@@ -1,404 +1,516 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <title>DOCTOR CELL - Sobre Nosotros</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="DOCTOR CELL - Expertos en reparación de celulares, tablets y dispositivos electrónicos. Servicio rápido y garantizado.">
-
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
-
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - DOCTOR CELL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #28a745;
+            --secondary-color: #155724;
+            --accent-color: #20c997;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --gold-color: #FFD700;
+            --blue-color: #007bff;
+            --purple-color: #6f42c1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .hero-about {
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.9) 0%, rgba(32, 201, 151, 0.9) 100%), url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--blue-color));
+        }
+        
+        .team-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .team-img {
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .value-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--blue-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--blue-color));
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            width: 45%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-content:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content:before {
+            left: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content:before {
+            right: -10px;
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--blue-color));
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--dark-color), #000);
+            color: white;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--blue-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Start Top Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@doctorcell.com">info@doctorcell.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:555-123-4567">555-123-4567</a>
-                </div>
-                <div>
-                    <a class="text-light" href="https://fb.com/doctorcell" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/doctorcell" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/doctorcell" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/company/doctorcell" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Close Top Nav -->
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/15551234567?text=Hola,%20me%20interesan%20sus%20servicios%20de%20reparación" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                DOCTOR CELL
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-success" href="index.html">
+                <i class="fas fa-mobile-alt me-2"></i>DOCTOR CELL
             </a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">Sobre Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="services.html">Servicios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contacto</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Buscar ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="quote.html">
-                        <i class="fa fa-fw fa-file-alt text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Cotizar</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="tel:555-123-4567">
-                        <i class="fa fa-fw fa-phone text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Llamar</span>
-                    </a>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop-single.html">Reparaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contacto</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
-    <!-- Close Header -->
 
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Buscar servicios ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Banner -->
-    <section class="bg-success py-5">
+    <!-- Hero Section -->
+    <section class="hero-about">
         <div class="container">
-            <div class="row align-items-center py-5">
-                <div class="col-md-8 text-white">
-                    <h1>Sobre DOCTOR CELL</h1>
-                    <p>
-                        En DOCTOR CELL somos especialistas en reparación de dispositivos móviles con más de 10 años de experiencia en el sector. 
-                        Nuestro equipo de técnicos certificados está comprometido con ofrecer soluciones rápidas, efectivas y asequibles para 
-                        todos los problemas relacionados con celulares, tablets y dispositivos electrónicos.
-                    </p>
-                    <p>
-                        Utilizamos repuestos de alta calidad y ofrecemos garantía en todos nuestros servicios para tu total tranquilidad.
-                    </p>
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4">Nuestra Historia</h1>
+                    <p class="lead mb-4">Más de 10 años siendo líderes en reparación de dispositivos móviles con pasión y dedicación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5">
+                    <img src="https://images.unsplash.com/photo-1581094794329-95c5b4a56b0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Nuestro taller" class="img-fluid rounded-3 shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title">¿Quiénes Somos?</h2>
+                    <p class="lead">DOCTOR CELL nació en 2013 con una simple misión: ofrecer reparaciones de celulares rápidas, confiables y accesibles.</p>
+                    <p>Lo que comenzó como un pequeño local con dos técnicos, hoy es una empresa líder con múltiples sucursales y un equipo de más de 50 profesionales especializados.</p>
+                    <p>Nos enorgullece haber reparado más de 10,000 dispositivos y mantener una tasa de satisfacción del 98% entre nuestros clientes.</p>
+                    <div class="mt-4">
+                        <a href="contact.html" class="btn btn-primary-custom me-3">Contáctanos</a>
+                        <a href="shop.html" class="btn btn-outline-success">Nuestros Servicios</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-counter">10,000+</div>
+                    <p class="fw-bold text-dark">Dispositivos Reparados</p>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-counter">98%</div>
+                    <p class="fw-bold text-dark">Satisfacción del Cliente</p>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-counter">50+</div>
+                    <p class="fw-bold text-dark">Técnicos Especializados</p>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-counter">10+</div>
+                    <p class="fw-bold text-dark">Años de Experiencia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Nuestros Valores</h2>
+                    <p class="lead">Los principios que guían nuestro trabajo día a día</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="text-primary">Calidad Garantizada</h4>
+                        <p>Utilizamos solo repuestos de primera calidad y ofrecemos garantía en todos nuestros servicios.</p>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <img src="assets/img/about-hero.svg" alt="Sobre DOCTOR CELL">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Close Banner -->
-
-    <!-- Start Section -->
-    <section class="container py-5">
-        <div class="row text-center pt-5 pb-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">Nuestros Servicios</h1>
-                <p>
-                    Ofrecemos una amplia gama de servicios de reparación para todos los modelos y marcas de celulares.
-                </p>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 text-success text-center"><i class="fas fa-mobile-alt"></i></div>
-                    <h2 class="h5 mt-4 text-center">Pantallas Rotas</h2>
-                    <p class="text-center px-3">Reemplazo profesional de pantallas y cristales táctiles para todos los modelos.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 text-success text-center"><i class="fas fa-battery-half"></i></div>
-                    <h2 class="h5 mt-4 text-center">Cambio de Batería</h2>
-                    <p class="text-center px-3">Baterías originales y de alta capacidad para recuperar la autonomía de tu dispositivo.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 text-success text-center"><i class="fas fa-tint"></i></div>
-                    <h2 class="h5 mt-4 text-center">Daño por Agua</h2>
-                    <p class="text-center px-3">Limpieza y recuperación de dispositivos afectados por líquidos con tecnología especializada.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 text-success text-center"><i class="fas fa-microchip"></i></div>
-                    <h2 class="h5 mt-4 text-center">Reparaciones Técnicas</h2>
-                    <p class="text-center px-3">Solución de problemas de software, conectividad y componentes internos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Section -->
-
-    <!-- Start Brands -->
-    <section class="bg-light py-5">
-        <div class="container my-4">
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Marcas que Reparamos</h1>
-                    <p>
-                        Trabajamos con todas las principales marcas del mercado y disponemos de repuestos originales y de alta calidad.
-                    </p>
-                </div>
-                <div class="col-lg-9 m-auto tempaltemo-carousel">
-                    <div class="row d-flex flex-row">
-                        <!--Controls-->
-                        <div class="col-1 align-self-center">
-                            <a class="h1" href="#templatemo-slide-brand" role="button" data-bs-slide="prev">
-                                <i class="text-light fas fa-chevron-left"></i>
-                            </a>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-bolt"></i>
                         </div>
-                        <!--End Controls-->
-
-                        <!--Carousel Wrapper-->
-                        <div class="col">
-                            <div class="carousel slide carousel-multi-item pt-2 pt-md-0" id="templatemo-slide-brand" data-bs-ride="carousel">
-                                <!--Slides-->
-                                <div class="carousel-inner product-links-wap" role="listbox">
-
-                                    <!--First slide-->
-                                    <div class="carousel-item active">
-                                        <div class="row">
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_apple.png" alt="Apple"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_samsung.png" alt="Samsung"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_huawei.png" alt="Huawei"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_xiaomi.png" alt="Xiaomi"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--End First slide-->
-
-                                    <!--Second slide-->
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_motorola.png" alt="Motorola"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_lg.png" alt="LG"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_sony.png" alt="Sony"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_oppo.png" alt="Oppo"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--End Second slide-->
-                                </div>
-                                <!--End Slides-->
-                            </div>
+                        <h4 class="text-primary">Rapidez</h4>
+                        <p>La mayoría de las reparaciones se completan en menos de 2 horas. Tu tiempo es valioso.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
                         </div>
-                        <!--End Carousel Wrapper-->
-
-                        <!--Controls-->
-                        <div class="col-1 align-self-center">
-                            <a class="h1" href="#templatemo-slide-brand" role="button" data-bs-slide="next">
-                                <i class="text-light fas fa-chevron-right"></i>
-                            </a>
-                        </div>
-                        <!--End Controls-->
+                        <h4 class="text-primary">Precios Justos</h4>
+                        <p>Presupuestos transparentes sin costos ocultos. La mejor relación calidad-precio.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--End Brands-->
 
-    <!-- Why Choose Us Section -->
-    <section class="container py-5">
-        <div class="row text-center pt-5 pb-3">
-            <div class="col-lg-8 m-auto">
-                <h1 class="h1">¿Por Qué Elegir DOCTOR CELL?</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <div class="py-4">
-                    <i class="fas fa-clock fa-3x text-success mb-3"></i>
-                    <h4 class="h5">Reparaciones Rápidas</h4>
-                    <p>La mayoría de las reparaciones se completan en menos de 2 horas.</p>
+    <!-- Team Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Nuestro Equipo</h2>
+                    <p class="lead">Profesionales apasionados por la tecnología</p>
                 </div>
             </div>
-            <div class="col-md-4 text-center">
-                <div class="py-4">
-                    <i class="fas fa-shield-alt fa-3x text-success mb-3"></i>
-                    <h4 class="h5">Garantía Incluida</h4>
-                    <p>Todos nuestros servicios incluyen garantía por escrito de 90 días.</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Carlos Méndez - Director Técnico" class="img-fluid team-img">
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title text-primary">Carlos Méndez</h5>
+                            <p class="text-muted">Director Técnico</p>
+                            <p class="card-text">15 años de experiencia en reparación de dispositivos móviles. Especialista en microsoldadura.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="py-4">
-                    <i class="fas fa-dollar-sign fa-3x text-success mb-3"></i>
-                    <h4 class="h5">Precios Transparentes</h4>
-                    <p>Presupuesto gratuito sin compromiso y sin costos ocultos.</p>
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Ana Rodríguez - Gerente de Calidad" class="img-fluid team-img">
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title text-primary">Ana Rodríguez</h5>
+                            <p class="text-muted">Gerente de Calidad</p>
+                            <p class="card-text">Encargada de garantizar que cada reparación cumpla con nuestros estándares de excelencia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Miguel Torres - Especialista en Software" class="img-fluid team-img">
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title text-primary">Miguel Torres</h5>
+                            <p class="text-muted">Especialista en Software</p>
+                            <p class="card-text">Experto en recuperación de datos y solución de problemas de sistema operativo.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Why Choose Us Section -->
 
-    <!-- Start Footer -->
-    <footer class="bg-dark" id="tempaltemo_footer">
+    <!-- Timeline Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Nuestra Historia</h2>
+                    <p class="lead">El camino que nos ha llevado a ser líderes en el sector</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h5 class="text-primary">2013</h5>
+                        <h4>Fundación</h4>
+                        <p>Abrimos nuestro primer local en el centro de la ciudad con solo dos técnicos y mucha pasión por la tecnología.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h5 class="text-primary">2015</h5>
+                        <h4>Primera Expansión</h4>
+                        <p>Inauguramos nuestra segunda sucursal y ampliamos el equipo a 10 técnicos especializados.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h5 class="text-primary">2018</h5>
+                        <h4>Certificación de Calidad</h4>
+                        <p>Obtuvimos la certificación ISO 9001 por nuestros procesos de calidad en reparación.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h5 class="text-primary">2023</h5>
+                        <h4>Líderes del Mercado</h4>
+                        <p>Con 5 sucursales y más de 50 empleados, nos consolidamos como referentes en reparación de celulares.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
         <div class="container">
             <div class="row">
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">DOCTOR CELL</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li>
-                            <i class="fas fa-map-marker-alt fa-fw"></i>
-                            Av. Principal 123, Ciudad, País
-                        </li>
-                        <li>
-                            <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:555-123-4567">555-123-4567</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@doctorcell.com">info@doctorcell.com</a>
-                        </li>
+                <div class="col-lg-4 mb-4">
+                    <h4 class="text-success mb-4">
+                        <i class="fas fa-mobile-alt me-2"></i>DOCTOR CELL
+                    </h4>
+                    <p>Especialistas en reparación de celulares con más de 10 años de experiencia. Tu dispositivo en las mejores manos.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="social-icon me-3">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon me-3">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon me-3">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="text-light mb-4">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Inicio</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-light text-decoration-none">Sobre Nosotros</a></li>
+                        <li class="mb-2"><a href="shop.html" class="text-light text-decoration-none">Servicios</a></li>
+                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Reparaciones</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-light text-decoration-none">Contacto</a></li>
                     </ul>
                 </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Servicios</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="services.html#screens">Cambio de Pantallas</a></li>
-                        <li><a class="text-decoration-none" href="services.html#batteries">Cambio de Baterías</a></li>
-                        <li><a class="text-decoration-none" href="services.html#water">Reparación por Agua</a></li>
-                        <li><a class="text-decoration-none" href="services.html#charging">Problemas de Carga</a></li>
-                        <li><a class="text-decoration-none" href="services.html#software">Reparación de Software</a></li>
-                        <li><a class="text-decoration-none" href="services.html#cameras">Cámaras y Flash</a></li>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-light mb-4">Servicios</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Cambio de Pantallas</a></li>
+                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Cambio de Baterías</a></li>
+                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Reparación por Agua</a></li>
+                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Reparaciones Técnicas</a></li>
+                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Soporte de Software</a></li>
                     </ul>
                 </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Más Información</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="index.html">Inicio</a></li>
-                        <li><a class="text-decoration-none" href="about.html">Sobre Nosotros</a></li>
-                        <li><a class="text-decoration-none" href="locations.html">Nuestras Sucursales</a></li>
-                        <li><a class="text-decoration-none" href="faq.html">Preguntas Frecuentes</a></li>
-                        <li><a class="text-decoration-none" href="contact.html">Contacto</a></li>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-light mb-4">Horario de Atención</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2 text-light">Lunes - Viernes: 9:00 AM - 7:00 PM</li>
+                        <li class="mb-2 text-light">Sábados: 9:00 AM - 2:00 PM</li>
+                        <li class="mb-2 text-light">Domingos: Cerrado</li>
                     </ul>
-                </div>
-
-            </div>
-
-            <div class="row text-light mb-4">
-                <div class="col-12 mb-3">
-                    <div class="w-100 my-3 border-top border-light"></div>
-                </div>
-                <div class="col-auto me-auto">
-                    <ul class="list-inline text-left footer-icons">
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a rel="nofollow" class="text-light text-decoration-none" target="_blank" href="http://fb.com/doctorcell"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/doctorcell"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/doctorcell"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/company/doctorcell"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Dirección de correo</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Tu correo electrónico">
-                        <div class="input-group-text btn-success text-light">Suscribirse</div>
+                    <div class="mt-4">
+                        <a href="contact.html" class="btn btn-primary-custom">Solicitar Cotización</a>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="w-100 bg-black py-3">
-            <div class="container">
-                <div class="row pt-2">
-                    <div class="col-12">
-                        <p class="text-left text-light">
-                            Copyright &copy; 2023 DOCTOR CELL 
-                            | Diseñado por <a rel="sponsored" href="#" target="_blank">DOCTOR CELL Team</a>
-                        </p>
-                    </div>
+            <hr class="bg-light">
+            <div class="row pt-3">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-light">© 2023 DOCTOR CELL. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0 text-light">Diseñado con <i class="fas fa-heart text-danger"></i> para nuestros clientes</p>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- End Footer -->
 
-    <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <!-- End Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
