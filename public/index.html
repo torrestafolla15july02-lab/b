@@ -3,150 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOCTOR CELL - Especialistas en Reparación de Celulares</title>
+    <title>DOCTOR CELL - Reparación de Celulares</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #28a745;
             --secondary-color: #155724;
-            --accent-color: #20c997;
-            --dark-color: #343a40;
-            --light-color: #f8f9fa;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
         }
         
         .navbar-brand {
-            font-weight: 700;
-            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color) !important;
         }
         
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
             background-size: cover;
-            background-position: center;
             color: white;
-            padding: 150px 0;
+            padding: 100px 0;
             text-align: center;
         }
         
-        .section-title {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-bottom: 1rem;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--primary-color);
-        }
-        
-        .service-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
+        .category-card {
+            background: white;
             border-radius: 10px;
-            overflow: hidden;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
             height: 100%;
+            border-top: 4px solid var(--primary-color);
         }
         
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .category-card:hover {
+            transform: translateY(-5px);
         }
         
-        .service-icon {
+        .category-icon {
             font-size: 3rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
         }
         
-        .brand-logo {
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
-            max-height: 60px;
-        }
-        
-        .brand-logo:hover {
-            filter: grayscale(0%);
-        }
-        
-        .testimonial-card {
-            border-left: 4px solid var(--primary-color);
-            background-color: var(--light-color);
+        .repair-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
         }
         
         .btn-primary-custom {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
             padding: 10px 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
         }
         
-        .btn-primary-custom:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-        
-        .footer {
-            background-color: var(--dark-color);
-            color: white;
-        }
-        
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-        
-        .back-to-top {
+        .whatsapp-float {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: var(--primary-color);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .back-to-top.show {
-            opacity: 1;
-        }
-        
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
             background-color: #25D366;
             color: white;
             width: 60px;
@@ -155,80 +77,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             z-index: 1000;
-            transition: transform 0.3s ease;
         }
         
-        .floating-whatsapp:hover {
-            transform: scale(1.1);
-        }
-        
-        .stats-section {
-            background: linear-gradient(rgba(40, 167, 69, 0.9), rgba(21, 87, 36, 0.9)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+        .footer {
+            background: #343a40;
             color: white;
-            padding: 80px 0;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .gallery-item img {
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(40, 167, 69, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
+            padding: 3rem 0;
         }
     </style>
 </head>
 <body>
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/15551234567?text=Hola,%20me%20interesan%20sus%20servicios%20de%20reparación" class="floating-whatsapp" target="_blank">
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5215512345678" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Back to top button -->
-    <a href="#" class="back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </a>
-
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand text-success" href="index.html">
+            <a class="navbar-brand" href="index.html">
                 <i class="fas fa-mobile-alt me-2"></i>DOCTOR CELL
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -237,19 +107,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
+                        <a class="nav-link active" href="index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Sobre Nosotros</a>
+                        <a class="nav-link" href="pantallas.html">Pantallas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="shop.html">Servicios</a>
+                        <a class="nav-link" href="baterias.html">Baterías</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="shop-single.html">Reparaciones</a>
+                        <a class="nav-link" href="problemas.html">Problemas Técnicos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contacto</a>
+                        <a class="nav-link" href="contacto.html">Contacto</a>
                     </li>
                 </ul>
             </div>
@@ -257,248 +127,135 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero-section">
+    <section class="hero-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h1 class="display-4 fw-bold mb-4">Expertos en Reparación de Celulares</h1>
-                    <p class="lead mb-4">Reparamos tu dispositivo con la máxima calidad, rapidez y garantía. Más de 10 años devolviendo la vida a tus dispositivos móviles.</p>
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="shop.html" class="btn btn-primary-custom btn-lg">Nuestros Servicios</a>
-                        <a href="contact.html" class="btn btn-outline-light btn-lg">Contactar Ahora</a>
-                    </div>
+                    <h1 class="mb-4">Reparamos tu celular con honestidad</h1>
+                    <p class="lead mb-4">Especialistas en reparación de pantallas, baterías y problemas técnicos</p>
+                    <a href="https://wa.me/5215512345678" class="btn btn-success btn-lg" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i>Consulta Gratis
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="servicios" class="py-5 bg-light">
+    <!-- Categories Section -->
+    <section class="py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Nuestros Servicios</h2>
-                    <p class="lead">Ofrecemos soluciones completas para todos los problemas de tu dispositivo móvil</p>
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="mb-3">Nuestras Especialidades</h2>
+                    <p class="text-muted">Soluciones para los problemas más comunes</p>
                 </div>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card service-card shadow-sm">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <h4 class="card-title">Cambio de Pantallas</h4>
-                            <p class="card-text">Reemplazamos pantallas rotas o dañadas con componentes de alta calidad y garantía.</p>
-                            <a href="shop-single.html" class="btn btn-primary-custom">Solicitar Servicio</a>
+                <!-- Pantallas -->
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-mobile-alt"></i>
                         </div>
+                        <img src="https://images.unsplash.com/photo-1581094794329-95c5b4a56b0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Reparación de pantallas" class="repair-image">
+                        <h4>Pantallas Rotas</h4>
+                        <p class="text-muted">Cambio de pantallas para todas las marcas</p>
+                        <p class="h5 text-primary">Desde $400 MXN</p>
+                        <a href="pantallas.html" class="btn btn-outline-primary mt-3">Ver Más</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card service-card shadow-sm">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon">
-                                <i class="fas fa-battery-full"></i>
-                            </div>
-                            <h4 class="card-title">Cambio de Baterías</h4>
-                            <p class="card-text">Baterías originales y de alta capacidad para recuperar la autonomía de tu dispositivo.</p>
-                            <a href="shop-single.html" class="btn btn-primary-custom">Solicitar Servicio</a>
+                
+                <!-- Baterías -->
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-battery-full"></i>
                         </div>
+                        <img src="https://images.unsplash.com/photo-1581094794358-9377e7fddf2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Cambio de baterías" class="repair-image">
+                        <h4>Baterías</h4>
+                        <p class="text-muted">Si tu celular no aguanta carga</p>
+                        <p class="h5 text-primary">Desde $300 MXN</p>
+                        <a href="baterias.html" class="btn btn-outline-primary mt-3">Ver Más</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card service-card shadow-sm">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon">
-                                <i class="fas fa-tint"></i>
-                            </div>
-                            <h4 class="card-title">Daño por Agua</h4>
-                            <p class="card-text">Limpieza y recuperación de dispositivos afectados por líquidos con tecnología especializada.</p>
-                            <a href="shop-single.html" class="btn btn-primary-custom">Solicitar Servicio</a>
+                
+                <!-- Problemas Técnicos -->
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-tools"></i>
                         </div>
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Problemas técnicos" class="repair-image">
+                        <h4>Problemas Técnicos</h4>
+                        <p class="text-muted">Mojó, no carga, se apaga, etc.</p>
+                        <p class="h5 text-primary">Desde $250 MXN</p>
+                        <a href="problemas.html" class="btn btn-outline-primary mt-3">Ver Más</a>
                     </div>
                 </div>
-            </div>
-            <div class="text-center mt-5">
-                <a href="shop.html" class="btn btn-outline-success btn-lg">Ver Todos los Servicios</a>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
+    <!-- Quick Info -->
+    <section class="py-5 bg-light">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">10,000+</div>
-                    <p>Dispositivos Reparados</p>
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-clock fa-2x text-primary mb-3"></i>
+                    <h5>Rápido</h5>
+                    <p class="text-muted">Mismo día en la mayoría de los casos</p>
                 </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">98%</div>
-                    <p>Tasa de Satisfacción</p>
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-shield-alt fa-2x text-primary mb-3"></i>
+                    <h5>Garantía</h5>
+                    <p class="text-muted">30 días en todas las reparaciones</p>
                 </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">45 min</div>
-                    <p>Tiempo Promedio de Reparación</p>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">90 días</div>
-                    <p>Garantía en Todos los Servicios</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Brands Section -->
-    <section id="marcas" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Marcas que Reparamos</h2>
-                    <p class="lead">Trabajamos con todas las principales marcas del mercado</p>
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-center g-4">
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" class="img-fluid brand-logo" style="max-height: 40px;">
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" class="img-fluid brand-logo">
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Huawei_Standard_logo.svg" alt="Huawei" class="img-fluid brand-logo">
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi" class="img-fluid brand-logo">
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Motorola_M_symbol_%282020%29.svg" alt="Motorola" class="img-fluid brand-logo">
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/LG_symbol_%282015%29.svg" alt="LG" class="img-fluid brand-logo">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonios" class="py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Lo que Dicen Nuestros Clientes</h2>
-                    <p class="lead">Miles de clientes satisfechos confían en nosotros</p>
-                </div>
-            </div>
-            
+                <div class="col-md-4 mb-4">
+                    <i class="fas fa-dollar-sign fa-2x text-primary mb-3"></i>
+                    <h5>Precios Justos</h5>
+                    <p class="text-muted">Sin sorpresas, presupuesto claro</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer py-5">
+    <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h4 class="text-success mb-4">
+                    <h5 class="text-success mb-3">
                         <i class="fas fa-mobile-alt me-2"></i>DOCTOR CELL
-                    </h4>
-                    <p>Especialistas en reparación de celulares con más de 10 años de experiencia. Tu dispositivo en las mejores manos.</p>
-                    <div class="d-flex mt-4">
-                        <a href="#" class="social-icon me-3">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon me-3">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon me-3">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
+                    </h5>
+                    <p>Reparación de celulares con honestidad y buen precio.</p>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h5 class="text-light mb-4">Enlaces Rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Inicio</a></li>
-                        <li class="mb-2"><a href="about.html" class="text-light text-decoration-none">Sobre Nosotros</a></li>
-                        <li class="mb-2"><a href="shop.html" class="text-light text-decoration-none">Servicios</a></li>
-                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Reparaciones</a></li>
-                        <li class="mb-2"><a href="contact.html" class="text-light text-decoration-none">Contacto</a></li>
-                    </ul>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="text-white mb-3">Contacto</h5>
+                    <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>Calle Local #123, Centro</p>
+                    <p class="mb-1"><i class="fas fa-phone me-2"></i>(55) 1234-5678</p>
+                    <p class="mb-0"><i class="fas fa-clock me-2"></i>Lun-Vie: 10am-7pm</p>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="text-light mb-4">Servicios</h5>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="text-white mb-3">Categorías</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Cambio de Pantallas</a></li>
-                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Cambio de Baterías</a></li>
-                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Reparación por Agua</a></li>
-                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Reparaciones Técnicas</a></li>
-                        <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Soporte de Software</a></li>
+                        <li><a href="pantallas.html" class="text-white text-decoration-none">Pantallas</a></li>
+                        <li><a href="baterias.html" class="text-white text-decoration-none">Baterías</a></li>
+                        <li><a href="problemas.html" class="text-white text-decoration-none">Problemas Técnicos</a></li>
                     </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="text-light mb-4">Horario de Atención</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2 text-light">Lunes - Viernes: 9:00 AM - 7:00 PM</li>
-                        <li class="mb-2 text-light">Sábados: 9:00 AM - 2:00 PM</li>
-                        <li class="mb-2 text-light">Domingos: Cerrado</li>
-                    </ul>
-                    <div class="mt-4">
-                        <a href="contact.html" class="btn btn-primary-custom">Solicitar Cotización</a>
-                    </div>
                 </div>
             </div>
-            <hr class="bg-light">
+            <hr class="bg-white">
             <div class="row pt-3">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0 text-light">© 2023 DOCTOR CELL. Todos los derechos reservados.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0 text-light">Diseñado con <i class="fas fa-heart text-danger"></i> para nuestros clientes</p>
+                <div class="col-12 text-center">
+                    <p class="mb-0">© 2023 DOCTOR CELL - Reparación de Celulares</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Back to top button
-        const backToTopButton = document.querySelector('.back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
