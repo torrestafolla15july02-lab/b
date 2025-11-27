@@ -9,91 +9,216 @@
     <style>
         :root {
             --primary-color: #28a745;
+            --secondary-color: #155724;
         }
         
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
         
         .navbar-brand {
-            font-weight: bold;
+            font-weight: 700;
             color: var(--primary-color) !important;
+            font-size: 1.6rem;
         }
         
-        .category-hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581094794358-9377e7fddf2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+        .shop-hero {
+            background: linear-gradient(rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), url('https://images.unsplash.com/photo-1598327105854-c8674faddf74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
+            background-position: center;
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
         }
         
         .service-card {
             background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
             height: 100%;
-            border-left: 4px solid var(--primary-color);
-            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         
-        .repair-image {
+        .service-card.featured {
+            border: 3px solid #ffc107;
+            transform: scale(1.05);
+        }
+        
+        .service-card.featured:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+        
+        .service-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ffc107, #fd7e14);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        .service-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
         }
         
-        .btn-primary-custom {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+        
+        .price-tag {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+        
+        .service-features li:before {
+            content: '✓';
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .btn-service {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: white;
+            border-radius: 25px;
+            width: 100%;
+        }
+        
+        .btn-service:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+        
+        .category-filter {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 3rem 0;
+            color: white;
+        }
+        
+        .filter-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 10px 25px;
+            margin: 5px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
         }
         
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-decoration: none;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
         }
         
         .footer {
-            background: #343a40;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
             color: white;
-            padding: 3rem 0;
+            padding: 50px 0 30px;
         }
         
-        .price-tag {
-            font-size: 1.5rem;
-            font-weight: bold;
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .service-time {
+            background: rgba(40, 167, 69, 0.1);
             color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/5215512345678" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/5215512345678?text=Hola,%20me%20interesan%20sus%20servicios%20de%20reparación" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="fas fa-mobile-alt me-2"></i>DOCTOR CELL
@@ -113,7 +238,7 @@
                         <a class="nav-link active" href="shop.html">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="shop-single.html">Detalles</a>
+                        <a class="nav-link" href="shop-single.html">Reparaciones</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contacto</a>
@@ -124,13 +249,31 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="category-hero">
+    <section class="shop-hero">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h1 class="mb-4">Todos Nuestros Servicios</h1>
-                    <p class="lead">Reparaciones para todos los problemas de tu celular</p>
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-5 fw-bold mb-4">Nuestros Servicios</h1>
+                    <p class="lead mb-4">Reparaciones profesionales con garantía y los mejores precios</p>
+                    <div class="badge bg-warning text-dark fs-6 p-3">
+                        <i class="fas fa-shield-alt me-2"></i>60 Días de Garantía en Todos los Servicios
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="category-filter">
+        <div class="container text-center">
+            <h3 class="mb-4">Filtrar por Categoría</h3>
+            <div class="d-flex flex-wrap justify-content-center">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="pantallas">Pantallas</button>
+                <button class="filter-btn" data-filter="baterias">Baterías</button>
+                <button class="filter-btn" data-filter="agua">Daño por Agua</button>
+                <button class="filter-btn" data-filter="software">Software</button>
+                <button class="filter-btn" data-filter="tecnicos">Técnicos</button>
             </div>
         </div>
     </section>
@@ -139,99 +282,166 @@
     <section class="py-5">
         <div class="container">
             <div class="row g-4">
-                <!-- Pantallas -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
+                <!-- Pantallas - Featured -->
+                <div class="col-lg-4 col-md-6 service-item" data-category="pantallas" id="pantallas">
+                    <div class="service-card featured">
+                        <div class="service-badge">MÁS POPULAR</div>
                         <img src="https://images.unsplash.com/photo-1581094794329-95c5b4a56b0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Pantallas rotas" class="repair-image">
-                        <h5>Pantallas Rotas</h5>
-                        <p class="text-muted">Cambio de pantallas para todas las marcas y modelos</p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span class="price-tag">Desde $400</span>
-                            <a href="shop-single.html?service=pantalla" class="btn btn-primary-custom btn-sm">
-                                Ver Detalles
-                            </a>
+                             alt="Cambio de Pantallas" class="service-image">
+                        <div class="service-time">
+                            <i class="fas fa-clock me-2"></i>1-2 horas
                         </div>
+                        <h4 class="text-primary">Cambio de Pantalla</h4>
+                        <p class="text-muted">Reemplazo profesional de pantallas rotas con componentes de alta calidad.</p>
+                        
+                        <div class="price-tag">$400 MXN</div>
+                        <span class="text-muted">Precio base</span>
+                        
+                        <ul class="service-features">
+                            <li>Pantalla de alta calidad</li>
+                            <li>Garantía de 60 días</li>
+                            <li>Instalación profesional</li>
+                            <li>Pruebas de funcionalidad</li>
+                        </ul>
+                        
+                        <a href="shop-single.html?service=pantalla" class="btn btn-service">
+                            <i class="fas fa-tools me-2"></i>Solicitar Servicio
+                        </a>
                     </div>
                 </div>
-                
+
                 <!-- Baterías -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-lg-4 col-md-6 service-item" data-category="baterias" id="baterias">
                     <div class="service-card">
                         <img src="https://images.unsplash.com/photo-1581094794358-9377e7fddf2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Cambio de baterías" class="repair-image">
-                        <h5>Baterías</h5>
-                        <p class="text-muted">Si tu celular no aguanta carga, cambiamos la batería</p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span class="price-tag">Desde $300</span>
-                            <a href="shop-single.html?service=bateria" class="btn btn-primary-custom btn-sm">
-                                Ver Detalles
-                            </a>
+                             alt="Cambio de Baterías" class="service-image">
+                        <div class="service-time">
+                            <i class="fas fa-clock me-2"></i>45-90 minutos
                         </div>
+                        <h4 class="text-primary">Cambio de Batería</h4>
+                        <p class="text-muted">Baterías de alta capacidad para recuperar la autonomía de tu dispositivo.</p>
+                        
+                        <div class="price-tag">$300 MXN</div>
+                        <span class="text-muted">Precio base</span>
+                        
+                        <ul class="service-features">
+                            <li>Batería de larga duración</li>
+                            <li>Garantía de 6 meses</li>
+                            <li>Instalación segura</li>
+                            <li>Pruebas de carga</li>
+                        </ul>
+                        
+                        <a href="shop-single.html?service=bateria" class="btn btn-service">
+                            <i class="fas fa-tools me-2"></i>Solicitar Servicio
+                        </a>
                     </div>
                 </div>
-                
+
                 <!-- Daño por Agua -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-lg-4 col-md-6 service-item" data-category="agua" id="agua">
                     <div class="service-card">
                         <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Daño por agua" class="repair-image">
-                        <h5>Daño por Agua</h5>
-                        <p class="text-muted">Recuperamos celulares mojados o con humedad</p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span class="price-tag">Desde $250</span>
-                            <a href="shop-single.html?service=agua" class="btn btn-primary-custom btn-sm">
-                                Ver Detalles
-                            </a>
+                             alt="Reparación por Agua" class="service-image">
+                        <div class="service-time">
+                            <i class="fas fa-clock me-2"></i>2-4 horas
                         </div>
+                        <h4 class="text-primary">Daño por Agua</h4>
+                        <p class="text-muted">Limpieza especializada y recuperación de dispositivos afectados por líquidos.</p>
+                        
+                        <div class="price-tag">$250 MXN</div>
+                        <span class="text-muted">Precio base</span>
+                        
+                        <ul class="service-features">
+                            <li>Limpieza ultrasónica</li>
+                            <li>Diagnóstico gratuito</li>
+                            <li>Recuperación de datos</li>
+                            <li>Garantía de 30 días</li>
+                        </ul>
+                        
+                        <a href="shop-single.html?service=agua" class="btn btn-service">
+                            <i class="fas fa-tools me-2"></i>Solicitar Servicio
+                        </a>
                     </div>
                 </div>
-                
-                <!-- Cámaras -->
-                <div class="col-md-6 col-lg-4">
+
+                <!-- Software -->
+                <div class="col-lg-4 col-md-6 service-item" data-category="software" id="software">
                     <div class="service-card">
                         <img src="https://images.unsplash.com/photo-1581094794358-9377e7fddf2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Reparación de cámaras" class="repair-image">
-                        <h5>Cámaras</h5>
-                        <p class="text-muted">Reparamos cámaras que no enfocan o están dañadas</p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span class="price-tag">Desde $350</span>
-                            <a href="shop-single.html?service=camara" class="btn btn-primary-custom btn-sm">
-                                Ver Detalles
-                            </a>
+                             alt="Reparación de Software" class="service-image">
+                        <div class="service-time">
+                            <i class="fas fa-clock me-2"></i>1-2 horas
                         </div>
+                        <h4 class="text-primary">Problemas de Software</h4>
+                        <p class="text-muted">Solución de problemas del sistema operativo y recuperación de datos.</p>
+                        
+                        <div class="price-tag">$200 MXN</div>
+                        <span class="text-muted">Precio base</span>
+                        
+                        <ul class="service-features">
+                            <li>Actualización de sistema</li>
+                            <li>Recuperación de datos</li>
+                            <li>Limpieza de virus</li>
+                            <li>Optimización completa</li>
+                        </ul>
+                        
+                        <a href="shop-single.html?service=software" class="btn btn-service">
+                            <i class="fas fa-tools me-2"></i>Solicitar Servicio
+                        </a>
                     </div>
                 </div>
-                
+
+                <!-- Cámaras -->
+                <div class="col-lg-4 col-md-6 service-item" data-category="tecnicos" id="tecnicos">
+                    <div class="service-card">
+                        <img src="https://images.unsplash.com/photo-1581094794358-9377e7fddf2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Reparación de Cámaras" class="service-image">
+                        <div class="service-time">
+                            <i class="fas fa-clock me-2"></i>1-2 horas
+                        </div>
+                        <h4 class="text-primary">Reparación de Cámara</h4>
+                        <p class="text-muted">Reparación y reemplazo de módulos de cámara, lentes y flash LED.</p>
+                        
+                        <div class="price-tag">$350 MXN</div>
+                        <span class="text-muted">Precio base</span>
+                        
+                        <ul class="service-features">
+                            <li>Módulos originales</li>
+                            <li>Calibración profesional</li>
+                            <li>Pruebas de calidad</li>
+                            <li>Garantía de 60 días</li>
+                        </ul>
+                        
+                        <a href="shop-single.html?service=camara" class="btn btn-service">
+                            <i class="fas fa-tools me-2"></i>Solicitar Servicio
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Conectores -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-lg-4 col-md-6 service-item" data-category="tecnicos">
                     <div class="service-card">
                         <img src="https://images.unsplash.com/photo-1581094794329-95c5b4a56b0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Conectores de carga" class="repair-image">
-                        <h5>Conectores de Carga</h5>
-                        <p class="text-muted">Si tu celular no carga, reparamos el conector</p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span class="price-tag">Desde $200</span>
-                            <a href="shop-single.html?service=conector" class="btn btn-primary-custom btn-sm">
-                                Ver Detalles
-                            </a>
+                             alt="Reparación de Conectores" class="service-image">
+                        <div class="service-time">
+                            <i class="fas fa-clock me-2"></i>45-90 minutos
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Software -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1581094794358-9377e7fddf2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Problemas de software" class="repair-image">
-                        <h5>Problemas de Software</h5>
-                        <p class="text-muted">Lentitud, virus, actualizaciones y más</p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span class="price-tag">Desde $150</span>
-                            <a href="shop-single.html?service=software" class="btn btn-primary-custom btn-sm">
-                                Ver Detalles
-                            </a>
-                        </div>
+                        <h4 class="text-primary">Conector de Carga</h4>
+                        <p class="text-muted">Reparación y cambio de conectores de carga y auriculares para todos los modelos.</p>
+                        
+                        <div class="price-tag">$180 MXN</div>
+                        <span class="text-muted">Precio base</span>
+                        
+                        <ul class="service-features">
+                            <li>Conectores originales</li>
+                            <li>Reparación precisa</li>
+                            <li>Pruebas de conectividad</li>
+                            <li>Garantía de 60 días</li>
+                        </ul>
+                        
+                        <a href="shop-single.html?service=conector" class="btn btn-service">
+                            <i class="fas fa-tools me-2"></i>Solicitar Servicio
+                        </a>
                     </div>
                 </div>
             </div>
@@ -241,31 +451,32 @@
     <!-- Additional Services -->
     <section class="py-5 bg-light">
         <div class="container">
-            <div class="row text-center mb-4">
+            <div class="row text-center mb-5">
                 <div class="col-12">
-                    <h3>Servicios Adicionales</h3>
+                    <h3 class="section-title">Servicios Adicionales</h3>
+                    <p class="lead text-muted">Pequeños extras que hacemos con gusto</p>
                 </div>
             </div>
-            <div class="row g-3">
+            <div class="row g-4">
                 <div class="col-md-4">
                     <div class="service-card text-center">
-                        <i class="fas fa-sim-card fa-2x text-primary mb-3"></i>
-                        <h6>Cambio de Chip</h6>
-                        <p class="text-muted small">Gratis con cualquier reparación</p>
+                        <i class="fas fa-sim-card fa-3x text-primary mb-3"></i>
+                        <h5>Cambio de Chip</h5>
+                        <p class="text-muted">Gratis con cualquier reparación</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="service-card text-center">
-                        <i class="fas fa-memory fa-2x text-primary mb-3"></i>
-                        <h6>Limpieza Interna</h6>
-                        <p class="text-muted small">Incluida en todas las reparaciones</p>
+                        <i class="fas fa-memory fa-3x text-primary mb-3"></i>
+                        <h5>Limpieza Interna</h5>
+                        <p class="text-muted">Incluida en todas las reparaciones</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="service-card text-center">
-                        <i class="fas fa-diagnoses fa-2x text-primary mb-3"></i>
-                        <h6>Diagnóstico</h6>
-                        <p class="text-muted small">Completamente gratuito</p>
+                        <i class="fas fa-diagnoses fa-3x text-primary mb-3"></i>
+                        <h5>Diagnóstico</h5>
+                        <p class="text-muted">Completamente gratuito</p>
                     </div>
                 </div>
             </div>
@@ -277,35 +488,95 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h5 class="text-success mb-3">
+                    <h4 class="text-success mb-4">
                         <i class="fas fa-mobile-alt me-2"></i>DOCTOR CELL
-                    </h5>
-                    <p>Reparación de celulares con honestidad y buen precio.</p>
+                    </h4>
+                    <p class="mb-4">Especialistas en reparación de celulares con años de experiencia y compromiso con nuestra comunidad.</p>
+                    <div class="d-flex">
+                        <a href="#" class="text-white me-3 fs-5">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-white me-3 fs-5">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white fs-5">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="col-lg-4 mb-4">
-                    <h5 class="text-white mb-3">Contacto</h5>
-                    <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>Calle Local #123, Centro</p>
-                    <p class="mb-1"><i class="fas fa-phone me-2"></i>(55) 1234-5678</p>
-                    <p class="mb-0"><i class="fas fa-clock me-2"></i>Lun-Vie: 10am-7pm</p>
+                    <h5 class="text-white mb-4">Contacto</h5>
+                    <p class="mb-3">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        Av. Principal #123, Colonia Centro
+                    </p>
+                    <p class="mb-3">
+                        <i class="fas fa-phone me-2"></i>
+                        <a href="tel:5512345678" class="text-white text-decoration-none">(55) 1234-5678</a>
+                    </p>
+                    <p class="mb-0">
+                        <i class="fas fa-clock me-2"></i>
+                        Lun-Vie: 9:30 AM - 7:00 PM<br>
+                        Sábados: 9:30 AM - 2:00 PM
+                    </p>
                 </div>
                 <div class="col-lg-4 mb-4">
-                    <h5 class="text-white mb-3">Servicios</h5>
+                    <h5 class="text-white mb-4">Categorías</h5>
                     <ul class="list-unstyled">
-                        <li><a href="shop.html" class="text-white text-decoration-none">Pantallas</a></li>
-                        <li><a href="shop.html" class="text-white text-decoration-none">Baterías</a></li>
-                        <li><a href="shop.html" class="text-white text-decoration-none">Problemas Técnicos</a></li>
+                        <li class="mb-2"><a href="shop.html#pantallas" class="text-white text-decoration-none">Pantallas Rotas</a></li>
+                        <li class="mb-2"><a href="shop.html#baterias" class="text-white text-decoration-none">Cambio de Baterías</a></li>
+                        <li class="mb-2"><a href="shop.html#tecnicos" class="text-white text-decoration-none">Problemas Técnicos</a></li>
+                        <li class="mb-2"><a href="shop.html#agua" class="text-white text-decoration-none">Daño por Agua</a></li>
+                        <li class="mb-2"><a href="shop.html#software" class="text-white text-decoration-none">Problemas de Software</a></li>
                     </ul>
                 </div>
             </div>
-            <hr class="bg-white">
+            <hr class="bg-white my-4">
             <div class="row pt-3">
-                <div class="col-12 text-center">
-                    <p class="mb-0">© 2023 DOCTOR CELL - Reparación de Celulares</p>
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">© 2023 DOCTOR CELL. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Hecho con 💚 para nuestra comunidad</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Filtro de servicios
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const serviceItems = document.querySelectorAll('.service-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover clase active de todos los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Agregar clase active al botón clickeado
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    serviceItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 100);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
