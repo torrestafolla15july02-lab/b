@@ -1,148 +1,503 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <title>MobileHub - Contact</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" crossorigin="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - DOCTOR CELL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #28a745;
+            --secondary-color: #155724;
+            --accent-color: #20c997;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --gold-color: #FFD700;
+            --blue-color: #007bff;
+            --purple-color: #6f42c1;
+            --orange-color: #fd7e14;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+        }
+        
+        .page-wrapper {
+            background: white;
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .contact-hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--blue-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .form-control {
+            border-radius: 15px;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--blue-color));
+            border: none;
+            padding: 15px 40px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            color: white;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .hours-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--blue-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .hours-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .hours-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .emergency-badge {
+            background: linear-gradient(135deg, var(--orange-color), #dc3545);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--dark-color), #000);
+            color: white;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:angelo.mdo1gmail.com">angelo.mdo11@gmail.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:442-763-61-20">442-763-61-20</a>
-                </div>
-                <div>
-                    <a class="text-light" href="#"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="#"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="#"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="#"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/15551234567?text=Hola,%20me%20gustaría%20consultar%20sobre%20sus%20servicios" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">MobileHub</a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="shop.html">Phones</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+    <div class="page-wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand text-success" href="index.html">
+                    <i class="fas fa-mobile-alt me-2"></i>DOCTOR CELL
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">Sobre Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="shop.html">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="shop-single.html">Reparaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="contact.html">Contacto</a>
+                        </li>
                     </ul>
                 </div>
-                <div class="navbar align-self-center d-flex">
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
+            </div>
+        </nav>
+
+        <!-- Contact Hero -->
+        <section class="contact-hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h1 class="display-4 fw-bold mb-4">Contáctanos</h1>
+                        <p class="lead mb-4">Estamos aquí para ayudarte con cualquier problema de tu dispositivo</p>
+                        <div class="emergency-badge">
+                            <i class="fas fa-exclamation-triangle me-2"></i>REPARACIONES DE EMERGENCIA - MISMOS DÍAS
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </section>
 
-    <div class="container-fluid bg-light py-5">
-        <div class="col-md-6 m-auto text-center">
-            <h1 class="h1">Contact Us</h1>
-            <p>Feel free to reach out to us anytime. We are here to help you with any questions or support.</p>
-        </div>
+        <!-- Contact Form & Info -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-8">
+                        <div class="contact-card">
+                            <h2 class="text-primary mb-4">Solicita tu Reparación</h2>
+                            <p class="lead mb-4">Completa el formulario y nos pondremos en contacto contigo en menos de 30 minutos</p>
+                            
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="name" class="form-label fw-bold">Nombre Completo *</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="email" class="form-label fw-bold">Correo Electrónico *</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="phone" class="form-label fw-bold">Teléfono *</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="device" class="form-label fw-bold">Marca y Modelo *</label>
+                                        <input type="text" class="form-control" id="device" placeholder="Ej: iPhone 12, Samsung Galaxy S21" required>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="problem" class="form-label fw-bold">Describe el Problema *</label>
+                                    <textarea class="form-control" id="problem" rows="4" placeholder="Ej: Pantalla rota, no carga, se mojó..." required></textarea>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="service" class="form-label fw-bold">Servicio de Interés</label>
+                                    <select class="form-control" id="service">
+                                        <option value="">Selecciona un servicio</option>
+                                        <option value="pantalla">Cambio de Pantalla</option>
+                                        <option value="bateria">Cambio de Batería</option>
+                                        <option value="agua">Reparación por Agua</option>
+                                        <option value="software">Reparación de Software</option>
+                                        <option value="camara">Reparación de Cámara</option>
+                                        <option value="conector">Conector de Carga</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary-custom btn-lg px-5">
+                                        <i class="fas fa-paper-plane me-2"></i>ENVIAR SOLICITUD
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="contact-card mb-4">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h4 class="text-center text-primary">Visítanos</h4>
+                            <p class="text-center mb-0">Av. Principal 123, Centro<br>Ciudad, CP 12345<br>Edificio Tecnológico, Local 5</p>
+                        </div>
+                        
+                        <div class="contact-card mb-4">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h4 class="text-center text-primary">Llámanos</h4>
+                            <p class="text-center mb-2">
+                                <a href="tel:5551234567" class="text-decoration-none text-dark fw-bold fs-5">+1 (555) 123-4567</a>
+                            </p>
+                            <p class="text-center mb-0 text-muted">Lun-Vie: 9:00 AM - 7:00 PM<br>Sáb: 9:00 AM - 2:00 PM</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4 class="text-center text-primary">Escríbenos</h4>
+                            <p class="text-center mb-2">
+                                <a href="mailto:info@doctorcell.com" class="text-decoration-none text-dark fw-bold">info@doctorcell.com</a>
+                            </p>
+                            <p class="text-center mb-0 text-muted">Soporte: soporte@doctorcell.com<br>Cotizaciones: cotizaciones@doctorcell.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map & Hours -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-8">
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.888238106575!2d-99.17383972468257!3d19.427202537122854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff35f5bd1563%3A0x6c366f0e2de02ff7!2sEl%20%C3%81ngel%20de%20la%20Independencia!5e0!3m2!1ses!2smx!4v1701045600000!5m2!1ses!2smx" 
+                                width="100%" 
+                                height="400" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="hours-card">
+                            <h3 class="mb-4"><i class="fas fa-clock me-2"></i>Horario de Atención</h3>
+                            <ul class="hours-list">
+                                <li>
+                                    <strong>Lunes - Viernes</strong><br>
+                                    9:00 AM - 7:00 PM
+                                </li>
+                                <li>
+                                    <strong>Sábados</strong><br>
+                                    9:00 AM - 2:00 PM
+                                </li>
+                                <li>
+                                    <strong>Domingos</strong><br>
+                                    Cerrado
+                                </li>
+                                <li>
+                                    <strong>Emergencias</strong><br>
+                                    Disponible con cita
+                                </li>
+                            </ul>
+                            <div class="mt-4">
+                                <a href="tel:5551234567" class="btn btn-light btn-lg w-100">
+                                    <i class="fas fa-phone me-2"></i>LLAMAR AHORA
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Contact -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon" style="background: linear-gradient(135deg, #25D366, #128C7E);">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h4 class="text-primary">WhatsApp</h4>
+                            <p class="mb-3">Respuesta inmediata en horario comercial</p>
+                            <a href="https://wa.me/15551234567" class="btn btn-success" target="_blank">
+                                <i class="fab fa-whatsapp me-2"></i>ESCRIBIR POR WHATSAPP
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon" style="background: linear-gradient(135deg, #7289DA, #4a5fc1);">
+                                <i class="fab fa-facebook-messenger"></i>
+                            </div>
+                            <h4 class="text-primary">Messenger</h4>
+                            <p class="mb-3">Chatea con nosotros por Facebook</p>
+                            <a href="https://m.me/doctorcell" class="btn btn-primary" target="_blank">
+                                <i class="fab fa-facebook-messenger me-2"></i>ABRIR MESSENGER
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon" style="background: linear-gradient(135deg, #E4405F, #c13584);">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <h4 class="text-primary">Instagram</h4>
+                            <p class="mb-3">Síguenos y envíanos DM</p>
+                            <a href="https://instagram.com/doctorcell" class="btn btn-danger" target="_blank">
+                                <i class="fab fa-instagram me-2"></i>SEGUIR EN INSTAGRAM
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <h4 class="text-success mb-4">
+                            <i class="fas fa-mobile-alt me-2"></i>DOCTOR CELL
+                        </h4>
+                        <p>Especialistas en reparación de celulares con más de 10 años de experiencia. Tu dispositivo en las mejores manos.</p>
+                        <div class="d-flex mt-4">
+                            <a href="#" class="social-icon me-3">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon me-3">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon me-3">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <h5 class="text-light mb-4">Enlaces Rápidos</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Inicio</a></li>
+                            <li class="mb-2"><a href="about.html" class="text-light text-decoration-none">Sobre Nosotros</a></li>
+                            <li class="mb-2"><a href="shop.html" class="text-light text-decoration-none">Servicios</a></li>
+                            <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Reparaciones</a></li>
+                            <li class="mb-2"><a href="contact.html" class="text-light text-decoration-none">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <h5 class="text-light mb-4">Servicios</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Cambio de Pantallas</a></li>
+                            <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Cambio de Baterías</a></li>
+                            <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Reparación por Agua</a></li>
+                            <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Reparaciones Técnicas</a></li>
+                            <li class="mb-2"><a href="shop-single.html" class="text-light text-decoration-none">Soporte de Software</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <h5 class="text-light mb-4">Horario de Atención</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2 text-light">Lunes - Viernes: 9:00 AM - 7:00 PM</li>
+                            <li class="mb-2 text-light">Sábados: 9:00 AM - 2:00 PM</li>
+                            <li class="mb-2 text-light">Domingos: Cerrado</li>
+                        </ul>
+                        <div class="mt-4">
+                            <a href="contact.html" class="btn btn-success">Solicitar Cotización</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="bg-light">
+                <div class="row pt-3">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0 text-light">© 2023 DOCTOR CELL. Todos los derechos reservados.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <p class="mb-0 text-light">Diseñado con <i class="fas fa-heart text-danger"></i> para nuestros clientes</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <div id="mapid" style="width: 100%; height: 300px;"></div>
-
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        var mymap = L.map('mapid').setView([-23.013104, -43.394365], 13);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-        }).addTo(mymap);
-
-        L.marker([-23.013104, -43.394365]).addTo(mymap)
-            .bindPopup("<b>Zay</b> eCommerce Template<br>Location.").openPopup();
-
-        mymap.scrollWheelZoom.disable();
-        mymap.touchZoom.disable();
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo en menos de 30 minutos.');
+            this.reset();
+        });
     </script>
-
-    <div class="container py-5">
-        <div class="row py-5">
-            <form class="col-md-9 m-auto" method="post" role="form">
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Name">
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Email">
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="subject">Subject</label>
-                    <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Subject">
-                </div>
-                <div class="mb-3">
-                    <label for="message">Message</label>
-                    <textarea class="form-control mt-1" id="message" name="message" placeholder="Message" rows="8"></textarea>
-                </div>
-                <div class="row">
-                    <div class="col text-end mt-2">
-                        <button type="submit" class="btn btn-success btn-lg px-3">Send Message</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <footer class="bg-dark" id="tempaltemo_footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><i class="fas fa-map-marker-alt fa-fw"></i> 123 Example Street</li>
-                        <li><i class="fa fa-phone fa-fw"></i> <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a></li>
-                        <li><i class="fa fa-envelope fa-fw"></i> <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Smartphones</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">iPhone Series</a></li>
-                        <li><a class="text-decoration-none" href="#">Samsung Galaxy</a></li>
-                        <li><a class="text-decoration-none" href="#">Xiaomi Phones</a></li>
-                        <li><a class="text-decoration-none" href="#">Motorola Phones</a></li>
-                        <li><a class="text-decoration-none" href="#">Phone Accessories</a></li>
-                        <li><a class="text-decoration-none" href="#">Chargers & Cables
+</body>
+</html>
