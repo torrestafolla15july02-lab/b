@@ -9,52 +9,68 @@
     <style>
         :root {
             --primary-color: #28a745;
+            --secondary-color: #155724;
         }
         
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
         
         .navbar-brand {
-            font-weight: bold;
+            font-weight: 700;
             color: var(--primary-color) !important;
+            font-size: 1.6rem;
         }
         
         .contact-hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background: linear-gradient(rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
+            background-position: center;
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
         }
         
         .contact-card {
             background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
             height: 100%;
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
         }
         
         .contact-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--primary-color);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
         
         .form-control {
-            border-radius: 8px;
-            padding: 12px 15px;
+            border-radius: 10px;
+            padding: 15px 20px;
             border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
         }
         
         .form-control:focus {
@@ -63,50 +79,118 @@
         }
         
         .btn-primary-custom {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 15px 40px;
             font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            color: white;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .hours-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .hours-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .hours-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .emergency-badge {
+            background: linear-gradient(135deg, #ffc107, #fd7e14);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
         }
         
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-decoration: none;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
         }
         
         .footer {
-            background: #343a40;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
             color: white;
-            padding: 3rem 0;
+            padding: 50px 0 30px;
         }
         
-        .map-container {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .social-contact {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+        
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/5215512345678" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/5215512345678?text=Hola,%20me%20gustaría%20consultar%20sobre%20sus%20servicios" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="fas fa-mobile-alt me-2"></i>DOCTOR CELL
@@ -126,7 +210,7 @@
                         <a class="nav-link" href="shop.html">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="shop-single.html">Detalles</a>
+                        <a class="nav-link" href="shop-single.html">Reparaciones</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="contact.html">Contacto</a>
@@ -141,8 +225,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h1 class="mb-4">Contáctanos</h1>
-                    <p class="lead">Estamos aquí para ayudarte con tu celular</p>
+                    <h1 class="display-5 fw-bold mb-4">Contáctanos</h1>
+                    <p class="lead mb-4">Estamos aquí para ayudarte con cualquier problema de tu dispositivo</p>
+                    <div class="emergency-badge">
+                        <i class="fas fa-exclamation-triangle me-2"></i>REPARACIONES DE EMERGENCIA - MISMOS DÍAS
+                    </div>
                 </div>
             </div>
         </div>
@@ -157,8 +244,16 @@
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <h5>Visítanos</h5>
-                        <p class="text-muted">Calle Local #123<br>Colonia Centro<br>Entre calles Principal y Secundaria</p>
+                        <h4 class="text-primary mb-3">Visítanos</h4>
+                        <p class="text-muted mb-4">
+                            Av. Principal #123<br>
+                            Colonia Centro<br>
+                            Entre calles Secundaria y Terciaria<br>
+                            Frente al Parque Central
+                        </p>
+                        <a href="https://maps.google.com" class="btn btn-outline-primary" target="_blank">
+                            <i class="fas fa-directions me-2"></i>Cómo Llegar
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -166,9 +261,15 @@
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <h5>Llámanos</h5>
-                        <p class="text-muted">(55) 1234-5678<br>Lunes a Viernes: 10am - 7pm<br>Sábados: 10am - 3pm</p>
-                        <a href="tel:5512345678" class="btn btn-primary-custom btn-sm">Llamar Ahora</a>
+                        <h4 class="text-primary mb-3">Llámanos</h4>
+                        <p class="text-muted mb-4">
+                            <strong class="fs-5">(55) 1234-5678</strong><br>
+                            Atención inmediata<br>
+                            Consultas y cotizaciones
+                        </p>
+                        <a href="tel:5512345678" class="btn btn-primary-custom">
+                            <i class="fas fa-phone me-2"></i>Llamar Ahora
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -176,30 +277,4 @@
                         <div class="contact-icon">
                             <i class="fab fa-whatsapp"></i>
                         </div>
-                        <h5>WhatsApp</h5>
-                        <p class="text-muted">Escríbenos para<br>cotizaciones rápidas<br>y consultas</p>
-                        <a href="https://wa.me/5215512345678" class="btn btn-success btn-sm" target="_blank">Escribir</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form & Map -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6">
-                    <div class="contact-card">
-                        <h3 class="mb-4">Envíanos un Mensaje</h3>
-                        <form>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" placeholder="Tu nombre">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Teléfono</label>
-                                    <input type="tel" class="form-control" placeholder="55 1234 5678">
-                                </div>
-                            </div>
+                        <h
